@@ -1,4 +1,4 @@
-package com.bookit.utilities;
+package com.cucumberFramework.utilities;
 
 import java.sql.*;
 import java.util.ArrayList;

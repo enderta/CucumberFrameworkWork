@@ -1,14 +1,12 @@
-package com.bookit.step_definitions;
+package com.cucumberFramework.step_definitions;
 
-import com.bookit.pages.SelfPage;
-import com.bookit.utilities.BookItApiUtil;
-import com.bookit.utilities.ConfigurationReader;
-import com.bookit.utilities.DBUtils;
-import com.bookit.utilities.Environment;
+import com.cucumberFramework.pages.SelfPage;
+import com.cucumberFramework.utilities.ApiUtil;
+import com.cucumberFramework.utilities.DBUtils;
+import com.cucumberFramework.utilities.Environment;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -28,7 +26,7 @@ public class ApiStepDefs {
     @Given("I logged Bookit api using {string} and {string}")
     public void i_logged_Bookit_api_using_and(String email, String password) {
 
-        token = BookItApiUtil.generateToken(email,password);
+        token = ApiUtil.generateToken(email,password);
         emailGlobal = email;
     }
 
@@ -151,12 +149,12 @@ public class ApiStepDefs {
 
     @Then("I delete previously added student")
     public void i_delete_previously_added_student() {
-        BookItApiUtil.deleteStudent(studentEmail,studentPassword);
+        ApiUtil.deleteStudent(studentEmail,studentPassword);
     }
 
 
     @Given("I logged Bookit api as {string}")
     public void iLoggedBookitApiAs(String role) {
-       token= BookItApiUtil.getTokenByRole(role);
+       token= ApiUtil.getTokenByRole(role);
     }
 }

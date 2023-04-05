@@ -1,4 +1,4 @@
-package com.bookit.utilities;
+package com.cucumberFramework.utilities;
 
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -32,15 +32,22 @@ public class Driver {
 //            if we pass the driver from terminal then use that one
 //           if we do not pass the driver from terminal then use the one properties file
             String browser = System.getProperty("browser") != null ? browser = System.getProperty("browser") : ConfigurationReader.get("browser");
-
+            ChromeOptions options = new ChromeOptions();
             switch (browser) {
+
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
-                    driverPool.set(new ChromeDriver());
+
+                    options.addArguments("start-maximized");
+                    driverPool.set(new ChromeDriver(options));
+
                     break;
                 case "chrome-headless":
                     WebDriverManager.chromedriver().setup();
-                    driverPool.set(new ChromeDriver(new ChromeOptions().setHeadless(true)));
+
+                    options.addArguments("start-maximized");
+                    options.addArguments("headless");
+                    driverPool.set(new ChromeDriver(options));
                     break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();

@@ -1,6 +1,6 @@
 Feature: Create student
 
-  @wip
+
   Scenario: Create student a teacher and verify status code 201
     Given I logged Bookit api using "blyst6@si.edu" and "barbabaslyst"
     When I send POST request to "/api/students/student" endpoint with following information
@@ -33,4 +33,3 @@ Feature: Create student
       | team-name       | BugBusters          |
     Then status code should be 201
     And I delete previously added student
-

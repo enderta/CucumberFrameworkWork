@@ -1,11 +1,11 @@
-package com.bookit.utilities;
+package com.cucumberFramework.utilities;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
 
-public class BookItApiUtil {
+public class ApiUtil {
 
 
     public static String generateToken(String email,String password){
@@ -32,7 +32,7 @@ public class BookItApiUtil {
     public static void deleteStudent(String studentEmail,String studentPassword){
 
         //1.send a get request to get token with student information
-        String studentToken = BookItApiUtil.generateToken(studentEmail,studentPassword);
+        String studentToken = ApiUtil.generateToken(studentEmail,studentPassword);
 
         //2.send a get request to /api/users/me endpoint and get the id number
         int idToDelete = given().accept(ContentType.JSON)
@@ -42,7 +42,7 @@ public class BookItApiUtil {
                 .then().statusCode(200).extract().jsonPath().getInt("id");
 
         //3.send a delete request as a teacher to /api/students/{id} endpoint to delete the student
-        String teacherToken =BookItApiUtil.generateToken(Environment.TEACHER_EMAIL,Environment.TEACHER_PASSWORD);
+        String teacherToken = ApiUtil.generateToken(Environment.TEACHER_EMAIL,Environment.TEACHER_PASSWORD);
         given().
                 pathParam("id",idToDelete)
                 .and().

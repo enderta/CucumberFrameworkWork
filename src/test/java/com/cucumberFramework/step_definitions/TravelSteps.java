@@ -1,5 +1,6 @@
-package com.bookit.utilities;
+package com.cucumberFramework.step_definitions;
 
+import com.cucumberFramework.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -170,7 +171,7 @@ public void i_should_see_a_list_of_available_hotels_in_the_specified_location_an
 	private Row row;
 	private Cell cell;
 	private int currentRow;
-	String filePath = "src/test/java/stepDefinitions/data.xlsx";
+	String filePath = "/home/ender/IdeaProjects/EU9-BookIT/src/test/java/com/cucumberFramework/step_definitions/data.xlsx";
 	File file = new File(filePath);
 	FileInputStream inputStream = new FileInputStream(file);
 

@@ -1,10 +1,10 @@
-package com.bookit.step_definitions;
+package com.cucumberFramework.step_definitions;
 
 
-import com.bookit.pages.SelfPage;
-import com.bookit.pages.SignInPage;
-import com.bookit.utilities.*;
-import cucumber.runtime.Env;
+import com.cucumberFramework.pages.SelfPage;
+import com.cucumberFramework.pages.SignInPage;
+import com.cucumberFramework.utilities.*;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
@@ -18,18 +18,18 @@ public class MyInfoStepDefs {
 	    SignInPage signInPage = new SignInPage();
 	    signInPage.email.sendKeys(email);
 	    signInPage.password.sendKeys(password);
-		BrowserUtils.waitFor(1);
+		//BrowserUtils.waitFor(2);
 	    signInPage.signInButton.click();
 
 
-	    	    
+
 	}
 
 	@When("user is on the my self page")
 	public void user_is_on_the_my_self_page() {
 	    SelfPage selfPage = new SelfPage();
 	    selfPage.goToSelf();
-		
+
 	}
 
 
@@ -45,9 +45,9 @@ public class MyInfoStepDefs {
 		System.out.println(Environment.TEACHER_EMAIL);
 		System.out.println(Environment.TEACHER_PASSWORD);
 
-		BookItApiUtil.getTokenByRole("teacher");
-		BookItApiUtil.getTokenByRole("student-member");
-		BookItApiUtil.getTokenByRole("student-leader");
+		ApiUtil.getTokenByRole("teacher");
+		ApiUtil.getTokenByRole("student-member");
+		ApiUtil.getTokenByRole("student-leader");
 
 
 	}
