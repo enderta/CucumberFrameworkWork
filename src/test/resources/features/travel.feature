@@ -24,14 +24,15 @@ Feature: User Registration and Login
     And I click the search button
     Then I should see a list of available hotels in the specified location and dates
 
-  @travel
-  Scenario Outline: Successful login
-    Given I am on the login page
-    When I enter "<username>" and "<password>" in the "<row>" row
-    And I click on the login button
-    Then I should be redirected to the home page
 
+  @travel
+  Scenario Outline: Login with valid credentials
+    Given I am on the Login page
+    When I enter "<email>" and "<password>" in the "<row>" row
+    And I click the Login button
+    Then I should be redirected to the Dashboard page
     Examples:
-      | username | password | row |
-      | 1        | 2        | 1   |
-      | 3        | 4        | 2   |
+      | email              | password |row  |
+      | john@example.com   | password |1    |
+      | mary@example.com   | password |2    |
+      | et@gmail.com  | password |3    |

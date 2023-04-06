@@ -165,7 +165,7 @@ public void i_should_see_a_list_of_available_hotels_in_the_specified_location_an
 	Assert.assertTrue(Driver.get().getCurrentUrl().contains("hotels"));
 	utilities.BrowserUtils.waitFor(2);
 }
-
+/*
 	private Workbook workbook;
 	private Sheet sheet;
 	private Row row;
@@ -238,5 +238,5 @@ public void i_should_see_a_list_of_available_hotels_in_the_specified_location_an
 		row = sheet.getRow(currentRow);
 		cell = row.createCell(2);
 		cell.setCellValue(value);
-	}
+	}*/
 }
