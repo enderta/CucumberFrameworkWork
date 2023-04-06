@@ -218,14 +218,14 @@ public void i_should_see_a_list_of_available_hotels_in_the_specified_location_an
 		if (actualUrl.contains("account")) {
 			setCellValue("pass");
 
-			FileOutputStream outputStream = new FileOutputStream("src/test/java/stepDefinitions/data.xlsx");
+			FileOutputStream outputStream = new FileOutputStream("/home/ender/IdeaProjects/EU9-BookIT/src/test/java/com/cucumberFramework/step_definitions/data.xlsx");
 			workbook.write(outputStream);
 			outputStream.close();
 			workbook.close();
 			Assert.assertTrue(true);
 		} else {
 			setCellValue("fail");
-			FileOutputStream outputStream = new FileOutputStream("src/test/java/stepDefinitions/data.xlsx");
+			FileOutputStream outputStream = new FileOutputStream("/home/ender/IdeaProjects/EU9-BookIT/src/test/java/com/cucumberFramework/step_definitions/data.xlsx");
 			workbook.write(outputStream);
 			outputStream.close();
 			workbook.close();
