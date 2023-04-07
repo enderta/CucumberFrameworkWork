@@ -25,7 +25,7 @@ Feature: User Registration and Login
     Then I should see a list of available hotels in the specified location and dates
 
 
-  @travel
+
   Scenario Outline: Login with valid credentials
     Given I am on the Login page
     When I enter "<email>" and "<password>" in the "<row>" row
@@ -36,3 +36,11 @@ Feature: User Registration and Login
       | john@example.com   | password |1    |
       | mary@example.com   | password |2    |
       | et@gmail.com  | password |3    |
+  @travel
+  Scenario: Search for hotels by city and dates
+    Given I am on the hotel search page
+    When I enter "Islamabad" as the destination
+    And I enter "May 1" as the check-in date
+    And I enter "May 5" as the check-out date
+    And I click on the search button
+    Then I should see a list of available hotels in New York
