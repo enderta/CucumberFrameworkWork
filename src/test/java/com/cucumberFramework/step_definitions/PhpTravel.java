@@ -26,12 +26,11 @@ TravelPage travelPage = new TravelPage();
 WebDriver driver = com.cucumberFramework.utilities.Driver.get();
 String filePath = "/home/ender/IdeaProjects/CucumberFrameWrok/src/test/java/com/cucumberFramework/step_definitions/data.xlsx";
 
+	public PhpTravel() throws FileNotFoundException {
+	}
 
 
-public PhpTravel() throws FileNotFoundException {
-}
-
-@Given("I am on the home page")
+	@Given("I am on the home page")
 public void i_am_on_the_home_page() {
 	driver.get("https://phptravels.net");
 }
