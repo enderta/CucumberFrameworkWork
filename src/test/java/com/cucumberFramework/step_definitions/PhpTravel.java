@@ -22,17 +22,10 @@ import java.time.Duration;
 
 public class PhpTravel {
 TravelPage travelPage = new TravelPage();
-
 WebDriver driver = com.cucumberFramework.utilities.Driver.get();
-
-private Workbook workbook;
-private Sheet sheet;
-private Row row;
-private Cell cell;
-private int currentRow;
 String filePath = "/home/ender/IdeaProjects/CucumberFrameWrok/src/test/java/com/cucumberFramework/step_definitions/data.xlsx";
-File file = new File(filePath);
-FileInputStream inputStream = new FileInputStream(file);
+
+
 
 public PhpTravel() throws FileNotFoundException {
 }
@@ -44,21 +37,9 @@ public void i_am_on_the_home_page() {
 
 @When("I enter {string} and {string} in the {string} row")
 public void i_enter_and_in_the_row(String email, String pass, String ind) throws IOException {
-	workbook = new XSSFWorkbook(inputStream);
-	sheet = workbook.getSheetAt(0);
-	int rowIndex = Integer.parseInt(ind);
-	row = sheet.getRow(rowIndex);
-	cell = row.getCell(0);
-	email = cell.toString();
-	System.out.println("username = " + email);
-	cell = row.getCell(1);
-	pass = cell.toString().substring(0, 6);
-	System.out.println("password = " + pass);
-	travelPage.login(email, pass);
-	currentRow = rowIndex;
-	System.out.println("currentRow = " + currentRow);
-
-
+	String email1 = TravelPage.cellValue(ind, email, filePath);
+	String pass1 = TravelPage.cellValue(ind, pass, filePath);
+	travelPage.login(email1, pass1);
 }
 
 @Given("I am on the Login page")
@@ -76,29 +57,15 @@ public void i_click_the_login_button() {
 public void i_should_be_redirected_to_the_dashboard_page() throws IOException {
 	String actualUrl = driver.getCurrentUrl();
 	if (actualUrl.contains("account")) {
-		setCellValue("pass");
-
-		FileOutputStream outputStream = new FileOutputStream("/home/ender/IdeaProjects/CucumberFrameWrok/src/test/java/com/cucumberFramework/step_definitions/data.xlsx");
-		workbook.write(outputStream);
-		outputStream.close();
-		workbook.close();
+		TravelPage.setCellValue("pass",filePath);
 		Assert.assertTrue(true);
 	} else {
-		setCellValue("fail");
-		FileOutputStream outputStream = new FileOutputStream("/home/ender/IdeaProjects/CucumberFrameWrok/src/test/java/com/cucumberFramework/step_definitions/data.xlsx");
-		workbook.write(outputStream);
-		outputStream.close();
-		workbook.close();
+		TravelPage.setCellValue("fail",filePath);
 		Assert.fail();
 	}
 }
 
-public void setCellValue(String value) {
-	row = sheet.getRow(currentRow);
-	cell = row.createCell(2);
-	cell.setCellValue(value);
 
-}
 @Given("I am on the hotel search page")
 public void i_am_on_the_hotel_search_page() {
 	driver.findElement(By.id("hotels-tab")).click();

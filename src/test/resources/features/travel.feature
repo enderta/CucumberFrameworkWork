@@ -24,19 +24,19 @@ Feature: User Registration and Login
     And I click the search button
     Then I should see a list of available hotels in the specified location and dates
 
-
-
+  @travel
   Scenario Outline: Login with valid credentials
     Given I am on the Login page
     When I enter "<email>" and "<password>" in the "<row>" row
     And I click the Login button
     Then I should be redirected to the Dashboard page
     Examples:
-      | email              | password |row  |
-      | john@example.com   | password |1    |
-      | mary@example.com   | password |2    |
-      | et@gmail.com  | password |3    |
-  @travel
+      | email | password | row |
+      | 0     | 1        | 1   |
+      | 0     | 1        | 2   |
+      | 0     | 1        | 3   |
+
+
   Scenario: Search for hotels by city and dates
     Given I am on the hotel search page
     When I enter "Islamabad" as the destination
