@@ -2,6 +2,7 @@ package com.cucumberFramework.step_definitions;
 
 import com.cucumberFramework.pages.TravelPage;
 import com.cucumberFramework.utilities.Driver;
+import com.cucumberFramework.utilities.ExcelUtils;
 import io.cucumber.java.en.*;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -37,8 +38,8 @@ public void i_am_on_the_home_page() {
 
 @When("I enter {string} and {string} in the {string} row")
 public void i_enter_and_in_the_row(String email, String pass, String ind) throws IOException {
-	String email1 = TravelPage.cellValue(ind, email, filePath);
-	String pass1 = TravelPage.cellValue(ind, pass, filePath);
+	String email1 = ExcelUtils.cellValue(ind, email, filePath);
+	String pass1 = ExcelUtils.cellValue(ind, pass, filePath);
 	travelPage.login(email1, pass1);
 }
 
@@ -57,10 +58,10 @@ public void i_click_the_login_button() {
 public void i_should_be_redirected_to_the_dashboard_page() throws IOException {
 	String actualUrl = driver.getCurrentUrl();
 	if (actualUrl.contains("account")) {
-		TravelPage.setCellValue("pass",filePath);
+		ExcelUtils.setCellValue("pass",filePath);
 		Assert.assertTrue(true);
 	} else {
-		TravelPage.setCellValue("fail",filePath);
+		ExcelUtils.setCellValue("fail",filePath);
 		Assert.fail();
 	}
 }
