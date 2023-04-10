@@ -42,7 +42,6 @@ public void login(String email, String password) {
 	private static Sheet sheet;
 	private static Row currentRow;
 
-
 	public static FileInputStream file(String filePath) throws IOException,FileNotFoundException {
 		File file = new File(filePath);
 		FileInputStream inputStream = new FileInputStream(file);
@@ -68,14 +67,12 @@ public static FileOutputStream fileOut(String filePath) throws IOException {
 	return fileOut;
 }
 public static void setCellValue(String value, String path) throws IOException {
-
 		Cell cell = currentRow.createCell(2);
 		cell.setCellValue(value);
 		FileOutputStream fileOut = fileOut(path);
 		workbook.write(fileOut);
 		fileOut.close();
 		workbook.close();
-
 
 }
 
