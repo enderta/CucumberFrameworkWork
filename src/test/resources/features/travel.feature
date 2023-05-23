@@ -44,3 +44,20 @@ Feature: User Registration and Login
     And I enter "May 5" as the check-out date
     And I click on the search button
     Then I should see a list of available hotels in New York
+
+
+  Scenario Outline: Book a room in a hotel
+    Given I am on the hotel search results page
+    When I select a <hotel_name>
+    And I select a <room_type> room
+    And I enter "2" as the number of adults
+    And I enter "1" as the number of children
+    And I click on the book now button
+    And I fill in the guest details
+    And I confirm the booking
+    Then I should see a booking confirmation message
+
+    Examples:
+      | hotel_name | room_type |
+      | Hilton     | Deluxe    |
+      | Marriott   | Suite     |
