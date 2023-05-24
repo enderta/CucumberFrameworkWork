@@ -18,6 +18,7 @@ import org.junit.runner.RunWith;
         glue = "com/cucumberFramework/step_definitions",
         dryRun = false,
         tags = "@travel"
+
 )
 public class CukesRunner {
 }
