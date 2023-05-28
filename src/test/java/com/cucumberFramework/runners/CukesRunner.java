@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/cucumberFramework/step_definitions",
         dryRun = false,
-        tags = "@travel"
+        tags = "@wip"
 
 )
 public class CukesRunner {
