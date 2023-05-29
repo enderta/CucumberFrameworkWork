@@ -62,4 +62,34 @@ public class SpaceX {
         assert ls.equals(values);
     }
 
+    @When("I send a GET request to {string} with query parameter {string} as {string}")
+    public void i_send_a_get_request_to_with_query_parameter_as(String string, String string2, String string3) {
+        response=given().accept("application/json").queryParams(string2,string3).when().get(string);
+    }
+    @Then("the response body should contain at least one launch entry")
+    public void the_response_body_should_contain_at_least_one_launch_entry() {
+        response.prettyPeek();
+       Assert.assertTrue(response.jsonPath().getList("").size()>0);
+    }
+    @Then("each launch entry should have the following information:")
+    public void each_launch_entry_should_have_the_following_information(Map<String,Object> dataTable) {
+       JsonPath jsonPath = response.jsonPath();
+         List<Map<String,Object>> list = jsonPath.getList("$");
+        System.out.println(list.get(0));
+        List<String> keys = new ArrayList<>(dataTable.keySet());
+        System.out.println(keys);
+        List<String> values = new ArrayList<>();
+        for (int i = 1; i < keys.size(); i++) {
+            values.add(list.get(0).get(keys.get(i)).toString());
+        }
+
+        List<String> ls=new ArrayList<>();
+        for (int i = 1; i < keys.size(); i++) {
+            ls.add(list.get(0).get(keys.get(i)).toString());
+        }
+        System.out.println(ls);
+        System.out.println(values);
+        assert ls.equals(values);
+    }
+
 }
