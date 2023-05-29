@@ -28,7 +28,7 @@ Feature: SpaceX API Testing
       | launch_success | true                  |
       | rocket         | Object                |
       | details        | SpaceX's Starlink ... |
-  @wip
+   @wip
   Scenario Outline: Get upcoming launches
     Given I have a valid access to the SpaceX API
     When I send a GET request to "<End Points>"
