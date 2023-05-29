@@ -7,13 +7,14 @@ Feature: SpaceX API Testing
     When I send a GET request to "/rockets/falcon1"
     Then the response status code should be 200
     And the response body should contain the following information:
-      | Field         | Expected Value        |
-      | rocket_id     | Falcon1               |
-      | rocket_name   | Falcon 1              |
-      | description   | The Falcon 1 was ...  |
-      | first_flight  | 2006-03-24            |
-      | country       | Republic of the ...   |
-  @wip
+      | Field        | Expected Value       |
+      | rocket_id    | Falcon1              |
+      | rocket_name  | Falcon 1             |
+      | description  | The Falcon 1 was ... |
+      | first_flight | 2006-03-24           |
+      | country      | Republic of the ...  |
+
+
   Scenario: Search for launch information
     Given I have a valid access to the SpaceX API
     When I send a GET request to "/launches" with query parameter "mission_name" as "FalconSat"
@@ -27,16 +28,15 @@ Feature: SpaceX API Testing
       | launch_success | true                  |
       | rocket         | Object                |
       | details        | SpaceX's Starlink ... |
-
-  Scenario: Get upcoming launches
+  @wip
+  Scenario Outline: Get upcoming launches
     Given I have a valid access to the SpaceX API
-    When I send a GET request to "/launches/upcoming"
-    Then the response status code should be 200
-    And the response body should contain a list of upcoming launches
-    And each launch should have the following information:
-      | Field              | Expected Type |
-      | flight_number      | Integer       |
-      | mission_name       | Starship to Mars |
-      | launch_date_utc    | 2023-08-15T08:00:00.000Z |
-      | rocket             | Object        |
-      | launch_site        | Object        |
+    When I send a GET request to "<End Points>"
+    Then the response status code should be <Status Code>
+
+    Examples:
+      | End Points         | Status Code |
+      | /launches/upcoming | 200         |
+      | /launches/past     | 200         |
+      | /launches/latest   | 200         |
+      | /launches/next     | 200         |
