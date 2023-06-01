@@ -15,7 +15,7 @@ Background:
       | standard_user | Doe      | john.doe+<timestamp>@example.com   | secret_sauce |
       | Jane          | Smith    | jane.smith+<timestamp>@example.com | password2    |
 
-  @wip
+
   Scenario Outline: Search Product
     Given I am on the product listing page
     When I search for "<searchTerm>"
