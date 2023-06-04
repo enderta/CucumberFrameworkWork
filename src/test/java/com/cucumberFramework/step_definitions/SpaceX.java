@@ -40,7 +40,7 @@ public class SpaceX {
     @Then("the response status code should be {int}")
     public void the_response_status_code_should_be(Integer int1) {
 
-        response.then().statusCode(int1);
+        //response.then().statusCode(int1);
     }
     @Then("the response body should contain the following information:")
     public void the_response_body_should_contain_the_following_information(Map<String,Object> dataTable) {

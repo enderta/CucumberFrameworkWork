@@ -16,11 +16,11 @@ Feature: Petstore API
     And the response should contain the created pet details
 
     Examples:
-      | name    | category | status      | statusCode |
-      | "Max"   | "Dog"    | "available" | 200        |
-      | "Lucy"  | "Cat"    | "sold"      | 200        |
-      | "Buddy" | "Dog"    | "pending"   | 200        |
-      | "Luna"  | "Cat"    | "available" | 200        |
+      | name     | category | status      | statusCode |
+      | Max | Dog    | available | 200        |
+      | Lucy   | Cat    | sold      | 200        |
+      | Buddy  | Dog    | pending   | 200        |
+      | Luna   | Cat    | available | 200        |
 
   Scenario: Update an existing pet
     Given an existing pet with ID 123
