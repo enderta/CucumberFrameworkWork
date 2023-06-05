@@ -6,7 +6,7 @@ Feature: Petstore API
   Background:
     Given the Petstore API is up and running
 
-  @wip
+
   Scenario Outline: Create a new pet
     Given I have the following pet data:
       | name   | category   | status   |
@@ -22,6 +22,7 @@ Feature: Petstore API
       | Buddy  | Dog    | pending   | 200        |
       | Luna   | Cat    | available | 200        |
 
+  @wip
   Scenario: Update an existing pet
     Given an existing pet with ID 123
     And I have the following updated pet data:
